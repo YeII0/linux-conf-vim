@@ -102,12 +102,10 @@ set hidden
 " delay before pressing "p" would accidentally paste).
 " <Leader>q	   : close buffer
 " <Leader>l    : list buffers
-" <Leader>b <Leader>f <Leader>g : go back/forward/last-used
+" <Leader>g    : last-used
 " <Leader>1 <Leader>2 <Leader>3 : go to buffer 1/2/3 etc
 nnoremap <Leader>l :ls<CR>
-nnoremap <F5> :ls<CR>:b<Space>
-nnoremap <Leader>f :bn<CR>
-nnoremap <Leader>b :bp<CR>
+nnoremap <Leader>b :ls<CR>:b<Space>
 nnoremap <Leader>g :e#<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
