@@ -53,15 +53,15 @@ set t_ut=""
 nnoremap <Leader>o o<Esc>0"_D
 nnoremap <Leader>O O<Esc>0"_D
 
-" Prevent delay after switching to normal mode through Esc and Ctrl+[
-set timeoutlen=1000
-set ttimeoutlen=5
-
+" Time to wait for mappings
+set timeout timeoutlen=1000
+" Time to wait for key codes
+set ttimeout ttimeoutlen=10
 " Select last changed/yanked text
 nnoremap <leader>v V`]
 
 
-" LONG LINE HANDLING
+" Long line handling
 "==============================================================
 " Soft wrap long lines
 set wrap
@@ -74,7 +74,7 @@ set formatoptions=qrn1
 set colorcolumn=85
 
 
-" SEARCH AND SUBSTITUTION
+" Search and substitution
 "===============================================================
 " Search as characters are entered
 set incsearch
@@ -94,7 +94,7 @@ set path+=**
 set gdefault
 
 
-" BUFFER
+" Buffer
 "================================================================
 " Allow to switch buffer when current one have unsaved changes
 set hidden
@@ -120,14 +120,14 @@ nnoremap <Leader>0 :10b<CR>
 nnoremap <Leader>q :bd<CR>
 
 
-" THEME CONFIGURATION
+" Theme configuration
 "===================================================================
 set background=dark
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_hls_cursor='blue'
 colorscheme gruvbox
 
-" BACKUP AND UNDO
+" Backup and undo
 "=====================================================================
 if has("vms")
 	" do not keep a backup file, use versions instead
@@ -144,7 +144,7 @@ else
 endif
 
 
-" AUTOCOMMAND GROUP
+" Autocommand group
 "=======================================================================
 " ":augroup vimStartup | au! | augroup END"
 augroup vimStartup
@@ -159,4 +159,11 @@ augroup vimStartup
 		\ | endif
 augroup END
 
-
+" Meta key fix
+"======================================================================
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
