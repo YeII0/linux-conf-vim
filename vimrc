@@ -4,7 +4,6 @@ set nocompatible
 " Set PCRE regex instead of using Vim regex
 nnoremap / /\v
 vnoremap / /\v
-
 " Minimal numbers of lines above and below cursor
 set scrolloff=5
 " Indicates fast terminal connection.
@@ -27,7 +26,6 @@ syntax enable
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-
 " Copy indent from previous line
 set autoindent
 " Indentation based on code syntax
@@ -38,7 +36,6 @@ filetype indent on
 " Visual autocomplete for command menu
 set wildmenu
 set wildcharm=<C-Z>
-
 " keep 200 lines of command line history
 set history=200
 " show the cursor position all the timeset ruler
@@ -52,7 +49,6 @@ set t_ut=""
 " Add insert line bindings for normal mode
 nnoremap <Leader>o o<Esc>0"_D
 nnoremap <Leader>O O<Esc>0"_D
-
 " Time to wait for mappings
 set timeout timeoutlen=1000
 " Time to wait for key codes
@@ -60,9 +56,19 @@ set ttimeout ttimeoutlen=10
 " Select last changed/yanked text
 nnoremap <leader>v V`]
 
+" Split
+"===================================================================================
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+" Splits navigation bindings
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Long line handling
-"==============================================================
+"===================================================================================
 " Soft wrap long lines
 set wrap
 " Wrap on words
@@ -73,9 +79,8 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 
-
 " Search and substitution
-"===============================================================
+"===================================================================================
 " Search as characters are entered
 set incsearch
 " Highlight matches
@@ -86,16 +91,14 @@ nnoremap <silent> <Leader><space> :nohlsearch<cr>
 " but if any character will be upper search will be case sensitivie.
 set ignorecase
 set smartcase
-
 " Search down into subfolders
 " Provides tab-completion for all file-related tasks
 set path+=**
 " Applies substitutions globally on line
 set gdefault
 
-
 " Buffer
-"================================================================
+"===================================================================================
 " Allow to switch buffer when current one have unsaved changes
 set hidden
 " Mappings to access buffers (don't use "<Leader>p" because a
@@ -119,16 +122,15 @@ nnoremap <Leader>9 :9b<CR>
 nnoremap <Leader>0 :10b<CR>
 nnoremap <Leader>q :bd<CR>
 
-
 " Theme configuration
-"===================================================================
+"===================================================================================
 set background=dark
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_hls_cursor='blue'
 colorscheme gruvbox
 
 " Backup and undo
-"=====================================================================
+"===================================================================================
 if has("vms")
 	" do not keep a backup file, use versions instead
 	set nobackup
@@ -143,9 +145,8 @@ else
 	endif
 endif
 
-
 " Autocommand group
-"=======================================================================
+"===================================================================================
 " ":augroup vimStartup | au! | augroup END"
 augroup vimStartup
 	au!
@@ -160,7 +161,7 @@ augroup vimStartup
 augroup END
 
 " Meta key fix
-"======================================================================
+"===================================================================================
 let c='a'
 while c <= 'z'
   exec "set <A-".c.">=\e".c
