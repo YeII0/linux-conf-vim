@@ -26,6 +26,7 @@ syntax enable
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+set expandtab
 " Copy indent from previous line
 set autoindent
 " Indentation based on code syntax
